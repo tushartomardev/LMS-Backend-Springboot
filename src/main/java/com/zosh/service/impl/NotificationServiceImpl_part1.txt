@@ -1,0 +1,59 @@
+package com.zosh.service.impl;
+
+import com.zosh.domain.BookLoanStatus;
+import com.zosh.domain.NotificationType;
+import com.zosh.exception.BookLoanException;
+import com.zosh.exception.UserException;
+import com.zosh.mapper.NotificationMapper;
+import com.zosh.modal.BookLoan;
+import com.zosh.modal.Notification;
+import com.zosh.modal.NotificationSettings;
+import com.zosh.modal.User;
+import com.zosh.payload.dto.NotificationDTO;
+import com.zosh.repository.BookLoanRepository;
+import com.zosh.repository.NotificationRepository;
+import com.zosh.service.EmailService;
+import com.zosh.service.NotificationDeliveryService;
+import com.zosh.service.NotificationService;
+import com.zosh.service.NotificationSettingsService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+@Service
+@Transactional
+@Slf4j
+public class NotificationServiceImpl implements NotificationService {
+
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+    private static final int BATCH_SIZE = 50;
+
+    private final BookLoanRepository bookLoanRepository;
+    private final EmailService emailService;
+    private final NotificationRepository notificationRepository;
+    private final NotificationSettingsService notificationSettingsService;
+    private final NotificationDeliveryService notificationDeliveryService;
+    private final NotificationMapper notificationMapper;
+
+    public NotificationServiceImpl(BookLoanRepository bookLoanRepository,
+                                  EmailService emailService,
+                                  NotificationRepository notificationRepository,
+                                  NotificationSettingsService notificationSettingsService,
+                                  NotificationDeliveryService notificationDeliveryService,
+                                  NotificationMapper notificationMapper) {
+        this.bookLoanRepository = bookLoanRepository;
+        this.emailService = emailService;
+        this.notificationRepository = notificationRepository;
+        this.notificationSettingsService = notificationSettingsService;
+        this.notificationDeliveryService = notificationDeliveryService;
+        this.notificationMapper = notificationMapper;
+    }

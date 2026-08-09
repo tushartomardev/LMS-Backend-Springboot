@@ -1,0 +1,34 @@
+package com.zosh.service;
+
+/**
+ * Service interface for managing book loan notifications
+ */
+public interface NotificationService {
+
+    /**
+     * Send overdue notifications to all users with overdue books
+     * @return Number of notifications sent
+     */
+    int sendOverdueNotifications();
+
+    /**
+     * Send due date reminders for books due within N days
+     * @param daysBeforeDue Days before due date to send reminder
+     * @return Number of notifications sent
+     */
+    int sendDueDateReminders(int daysBeforeDue);
+
+    /**
+     * Send overdue notification for a specific book loan
+     * @param bookLoanId Book loan ID
+     * @throws com.zosh.exception.BookLoanException if book loan not found
+     */
+    void sendOverdueNotification(Long bookLoanId);
+
+    /**
+     * Send due date reminder for a specific book loan
+     * @param bookLoanId Book loan ID
+     * @throws com.zosh.exception.BookLoanException if book loan not found
+     */
+    void sendDueDateReminder(Long bookLoanId);
+}
