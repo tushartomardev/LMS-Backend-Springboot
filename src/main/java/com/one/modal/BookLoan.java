@@ -19,11 +19,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "book_loans", indexes = {
-    @Index(name = "idx_user_id", columnList = "user_id"),
-    @Index(name = "idx_book_id", columnList = "book_id"),
-    @Index(name = "idx_status", columnList = "status"),
-    @Index(name = "idx_due_date", columnList = "due_date"),
-    @Index(name = "idx_checkout_date", columnList = "checkout_date")
+    @Index(name = "idx_book_loans_user_id", columnList = "user_id"),
+    @Index(name = "idx_book_loans_book_id", columnList = "book_id"),
+    @Index(name = "idx_book_loans_status", columnList = "status"),
+    @Index(name = "idx_book_loans_due_date", columnList = "due_date"),
+    @Index(name = "idx_book_loans_checkout_date", columnList = "checkout_date")
 })
 @EqualsAndHashCode
 @NoArgsConstructor

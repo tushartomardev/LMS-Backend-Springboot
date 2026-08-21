@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "books", indexes = {
-    @Index(name = "idx_isbn", columnList = "isbn", unique = true),
-    @Index(name = "idx_title", columnList = "title"),
-    @Index(name = "idx_author", columnList = "author"),
-    @Index(name = "idx_genre", columnList = "genre_id")
+    @Index(name = "idx_books_isbn", columnList = "isbn", unique = true),
+    @Index(name = "idx_books_title", columnList = "title"),
+    @Index(name = "idx_books_author", columnList = "author"),
+    @Index(name = "idx_books_genre_id", columnList = "genre_id")
 })
 @EqualsAndHashCode
 @NoArgsConstructor

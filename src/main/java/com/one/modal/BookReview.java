@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "book_reviews",
     indexes = {
-        @Index(name = "idx_book_id", columnList = "book_id"),
-        @Index(name = "idx_user_id", columnList = "user_id"),
-        @Index(name = "idx_rating", columnList = "rating")
+        @Index(name = "idx_book_reviews_book_id", columnList = "book_id"),
+        @Index(name = "idx_book_reviews_user_id", columnList = "user_id"),
+        @Index(name = "idx_book_reviews_rating", columnList = "rating")
     },
     uniqueConstraints = {
         @UniqueConstraint(name = "uk_user_book_review", columnNames = {"user_id", "book_id"})

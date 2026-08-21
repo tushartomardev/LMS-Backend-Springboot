@@ -20,13 +20,13 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "payments", indexes = {
-    @Index(name = "idx_user_id", columnList = "user_id"),
-    @Index(name = "idx_book_loan_id", columnList = "book_loan_id"),
-    @Index(name = "idx_status", columnList = "status"),
-    @Index(name = "idx_payment_type", columnList = "payment_type"),
-    @Index(name = "idx_gateway", columnList = "gateway"),
-    @Index(name = "idx_transaction_id", columnList = "transaction_id"),
-    @Index(name = "idx_created_at", columnList = "created_at")
+    @Index(name = "idx_payments_user_id", columnList = "user_id"),
+    @Index(name = "idx_payments_book_loan_id", columnList = "book_loan_id"),
+    @Index(name = "idx_payments_status", columnList = "status"),
+    @Index(name = "idx_payments_payment_type", columnList = "payment_type"),
+    @Index(name = "idx_payments_gateway", columnList = "gateway"),
+    @Index(name = "idx_payments_transaction_id", columnList = "transaction_id"),
+    @Index(name = "idx_payments_created_at", columnList = "created_at")
 })
 @Data
 @NoArgsConstructor

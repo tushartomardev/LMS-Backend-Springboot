@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "subscriptions", indexes = {
-    @Index(name = "idx_user_id", columnList = "user_id"),
+    @Index(name = "idx_subscriptions_user_id", columnList = "user_id"),
 //    @Index(name = "idx_is_active", columnList = "is_active"),
-        @Index(name = "idx_subscriptions_is_active", columnList = "is_active"),
-    @Index(name = "idx_end_date", columnList = "end_date"),
-    @Index(name = "idx_plan_id", columnList = "plan_id")
+    @Index(name = "idx_subscriptions_is_active", columnList = "is_active"),
+    @Index(name = "idx_subscriptions_end_date", columnList = "end_date"),
+    @Index(name = "idx_subscriptions_plan_id", columnList = "plan_id")
 })
 @Data
 @NoArgsConstructor
