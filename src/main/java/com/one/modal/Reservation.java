@@ -16,12 +16,19 @@ import java.time.LocalDateTime;
  * Allows users to reserve books that are currently unavailable.
  */
 @Entity
+//@Table(name = "reservations", indexes = {
+//    @Index(name = "idx_user_id", columnList = "user_id"),
+//    @Index(name = "idx_book_id", columnList = "book_id"),
+//    @Index(name = "idx_status", columnList = "status"),
+//    @Index(name = "idx_reserved_at", columnList = "reserved_at"),
+//    @Index(name = "idx_available_until", columnList = "available_until")
+//})
 @Table(name = "reservations", indexes = {
-    @Index(name = "idx_user_id", columnList = "user_id"),
-    @Index(name = "idx_book_id", columnList = "book_id"),
-    @Index(name = "idx_status", columnList = "status"),
-    @Index(name = "idx_reserved_at", columnList = "reserved_at"),
-    @Index(name = "idx_available_until", columnList = "available_until")
+        @Index(name = "idx_reservations_user_id", columnList = "user_id"),
+        @Index(name = "idx_reservations_book_id", columnList = "book_id"),
+        @Index(name = "idx_reservations_status", columnList = "status"),
+        @Index(name = "idx_reservations_reserved_at", columnList = "reserved_at"),
+        @Index(name = "idx_reservations_available_until", columnList = "available_until")
 })
 @Data
 @NoArgsConstructor
