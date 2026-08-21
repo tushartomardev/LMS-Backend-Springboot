@@ -82,6 +82,7 @@ public class SecurityConfig {
 
 	private List<String> allowedOrigins() {
 		List<String> origins = new ArrayList<>(Arrays.asList(
+				"https://onexlibrary.netlify.app",
 				"http://localhost:5173",
 				"http://localhost:3000"
 		));

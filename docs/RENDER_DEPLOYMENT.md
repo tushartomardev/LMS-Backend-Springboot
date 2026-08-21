@@ -7,13 +7,13 @@ Set the production frontend origin in Render so browser requests from Netlify ar
 Required Render environment variable:
 
 ```properties
-CORS_ALLOWED_ORIGINS=https://your-netlify-site.netlify.app
+CORS_ALLOWED_ORIGINS=https://onexlibrary.netlify.app
 ```
 
 If you prefer to keep one frontend URL variable, `FRONTEND_URL` is also used as the CORS origin when `CORS_ALLOWED_ORIGINS` is not set. For multiple frontend origins, use a comma-separated value:
 
 ```properties
-CORS_ALLOWED_ORIGINS=https://your-netlify-site.netlify.app,https://your-custom-domain.com
+CORS_ALLOWED_ORIGINS=https://onexlibrary.netlify.app,https://your-custom-domain.com
 ```
 
 Local development origins `http://localhost:5173` and `http://localhost:3000` are always allowed by the backend security configuration.
