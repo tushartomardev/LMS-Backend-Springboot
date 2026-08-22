@@ -32,15 +32,15 @@ public interface BookRepository extends JpaRepository<Book, Long> {
      * Advanced search with filters - search by title, author, ISBN and filter by genre
      */
     @Query("SELECT b FROM Book b WHERE " +
-           "(:searchTerm IS NULL OR " +
-           "LOWER(b.title) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(b.author) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-           "LOWER(b.isbn) LIKE LOWER(CONCAT('%', :searchTerm, '%'))) AND " +
+           "(:searchPattern IS NULL OR " +
+           "LOWER(b.title) LIKE :searchPattern OR " +
+           "LOWER(b.author) LIKE :searchPattern OR " +
+           "LOWER(b.isbn) LIKE :searchPattern) AND " +
            "(:genreId IS NULL OR b.genre.id = :genreId) AND " +
            "(:availableOnly = false OR b.availableCopies > 0) AND " +
            "b.active = true")
     Page<Book> searchBooksWithFilters(
-        @Param("searchTerm") String searchTerm,
+        @Param("searchPattern") String searchPattern,
         @Param("genreId") Long genreId,
         @Param("availableOnly") boolean availableOnly,
         Pageable pageable

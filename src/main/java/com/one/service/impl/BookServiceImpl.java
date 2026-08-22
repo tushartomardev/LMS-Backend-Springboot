@@ -194,8 +194,10 @@ public class BookServiceImpl implements BookService {
                 searchRequest.getSortDirection()
         );
 
+        String searchPattern = buildSearchPattern(searchRequest.getSearchTerm());
+
         Page<Book> bookPage = bookRepository.searchBooksWithFilters(
-                searchRequest.getSearchTerm(),
+                searchPattern,
                 searchRequest.getGenreId(),
                 searchRequest.getAvailableOnly() != null ? searchRequest.getAvailableOnly() : false,
                 pageable
@@ -217,6 +219,13 @@ public class BookServiceImpl implements BookService {
     }
 
     // ==================== HELPER METHODS ====================
+
+    private String buildSearchPattern(String searchTerm) {
+        if (searchTerm == null || searchTerm.trim().isEmpty()) {
+            return null;
+        }
+        return "%" + searchTerm.trim().toLowerCase() + "%";
+    }
 
     /**
      * Helper method to create Pageable object with sorting
