@@ -57,7 +57,7 @@ public class BookServiceImpl implements BookService {
         Book book = bookMapper.toEntity(bookDTO);
 
         // Validate available copies
-        if(!book.isAvailableCopiesValid()){
+        if(book.isAvailableCopiesValid()){
             throw new BookException("Available copies cannot exceed total copies");
         }
 
