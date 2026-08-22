@@ -41,13 +41,14 @@ public class BookController {
      * POST /api/books
      */
     @PostMapping
-    public ResponseEntity<BookDTO> createBook(
+    public ResponseEntity<?> createBook(
         @Valid @RequestBody BookDTO bookDTO) {
         try {
             BookDTO createdBook = bookService.createBook(bookDTO);
             return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
         } catch (BookException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ApiResponse(e.getMessage(), false));
         }
     }
 
@@ -124,14 +125,15 @@ public class BookController {
      * PUT /api/books/{id}
      */
     @PutMapping("/{id}")
-    public ResponseEntity<BookDTO> updateBook(
+    public ResponseEntity<?> updateBook(
             @PathVariable Long id,
             @Valid @RequestBody BookDTO bookDTO) {
         try {
             BookDTO updatedBook = bookService.updateBook(id, bookDTO);
             return ResponseEntity.ok(updatedBook);
         } catch (BookException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ApiResponse(e.getMessage(), false));
         }
     }
 
